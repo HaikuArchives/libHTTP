@@ -1,10 +1,15 @@
 #ifndef LIB_HTTP_BUILD
 #define LIB_HTTP_BUILD
 
-#ifdef _BUILDING_LIB_HTTP
-#define	_IMPEXP_LIBHTTP		__declspec(dllexport)
+
+#if __GNUC_MINOR__ > 2
+	#define _IMPEXP_LIBHTTP
 #else
-#define	_IMPEXP_LIBHTTP		__declspec(dllimport)
+	#ifdef _BUILDING_LIB_HTTP
+		#define	_IMPEXP_LIBHTTP		__declspec(dllexport)
+	#else
+		#define	_IMPEXP_LIBHTTP		__declspec(dllimport)
+	#endif
 #endif
 
 class _IMPEXP_LIBHTTP BufferedIO;

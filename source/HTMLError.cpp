@@ -23,6 +23,7 @@
 
 #define _BUILDING_LIB_HTTP
 #include <stdio.h>
+#include <stdlib.h>
 #include "HTMLError.h"
 
 static const char *kMessageHead = 
