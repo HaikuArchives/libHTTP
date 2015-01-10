@@ -204,7 +204,6 @@ TCP_Listener::TCP_Listener( unsigned short port, int acceptance_count )
 	this->acceptance_count = acceptance_count;
 	
 	Bind( port );
-	printf("Woops: %s\n", strerror(errno));
 	Listen( acceptance_count );
 }
 
