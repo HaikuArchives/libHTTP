@@ -33,7 +33,8 @@ SRCS = source/BufferIO.cpp source/DataIOPump.cpp source/DataIOUtils.cpp \
 	source/HTMLError.cpp source/HTTP_IO.cpp source/HTTPFileServer.cpp \
 	source/HTTPHandler.cpp source/HTTPListener.cpp source/HTTPMessage.cpp \
 	source/HTTPUtils.cpp source/StringUtils.cpp source/TCP_IO.cpp \
-	source/ThreadCaffeine.cpp
+	source/ThreadCaffeine.cpp source/HTTPRealm.cpp source/Environment.cpp \
+	source/ByteRanges.cpp
 
 #	Specify the resource definition files to use. Full or relative paths can be
 #	used.
@@ -106,7 +107,7 @@ SYMBOLS :=
 
 #	Includes debug information, which allows the binary to be debugged easily.
 #	If set to "TRUE", debug info will be created.
-DEBUGGER := 
+DEBUGGER := TRUE
 
 #	Specify any additional compiler flags to be used.
 COMPILER_FLAGS = 

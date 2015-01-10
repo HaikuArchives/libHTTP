@@ -24,6 +24,7 @@
 #define _BUILDING_LIB_HTTP
 #include <string.h>
 #include <errno.h>
+#include <stdio.h>
 #include <arpa/inet.h>
 #include "TCP_IO.h"
 #include "DNSResolver.h"
@@ -82,13 +83,13 @@ int Socket_IO::Connect( const struct sockaddr_in *remote_interface )
 
 int Socket_IO::Bind( unsigned short port, int32 address )
 {
-	sockaddr_in interface;
+	sockaddr_in interface = {0};
 	
 	interface.sin_family = AF_INET;
 	interface.sin_port = htons( port );
-	interface.sin_addr.s_addr = address;
-	memset(interface.sin_zero, 0, sizeof(interface.sin_zero));
-	return( bind( sock, (sockaddr *)&interface, sizeof( sockaddr_in ) ) );
+	interface.sin_addr.s_addr = htonl(address);
+
+	return( bind( sock, (sockaddr *)&interface, sizeof( interface ) ) );
 }
 
 int Socket_IO::Close( void )
@@ -203,6 +204,7 @@ TCP_Listener::TCP_Listener( unsigned short port, int acceptance_count )
 	this->acceptance_count = acceptance_count;
 	
 	Bind( port );
+	printf("Woops: %s\n", strerror(errno));
 	Listen( acceptance_count );
 }
 

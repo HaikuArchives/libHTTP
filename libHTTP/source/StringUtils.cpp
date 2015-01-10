@@ -24,6 +24,7 @@
 #define _BUILDING_LIB_HTTP
 #include <string.h>
 #include <stdlib.h>
+#include <fnmatch.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <SupportDefs.h>
@@ -33,6 +34,43 @@
 // Reserved URI Characters
 static const char *kReservedChars = ";/?:@&=+ \"#%<>";
 static const int32 kReservedCount = 14; // The number of reserved characters
+
+bool match_pattern(const char *pattern, const char *text)
+{
+	return fnmatch(pattern, text, 0) == 0;	
+}
+
+const char *get_next_field(const char *fieldStr, char *fieldName, char *fieldValue)
+{
+	if (*fieldStr == 0)
+		return 0;
+
+	while (isspace(*fieldStr)) fieldStr++;
+
+	int index = (int)(strchr(fieldStr, '=') - fieldStr);
+	strncpy(fieldName, fieldStr, index);
+	fieldName[index] = 0;
+	fieldStr += index + 1;
+	if (*fieldStr == '"')
+		fieldStr++;
+
+	char *loc = strchr(fieldStr, '"');
+	if (loc)
+		index = (int)(loc - fieldStr);
+	else
+		index = strlen(fieldStr);
+	strncpy(fieldValue, fieldStr, index);
+	fieldValue[index] = 0;
+	fieldStr += index;
+	if (loc)
+		fieldStr++;
+
+	if (*fieldStr == '"')
+		fieldStr++;
+
+	return fieldStr;
+}
+
 
 size_t uri_esc_str( char *dst, const char *src, size_t bufSize, bool usePlus, const char *protectedChars )
 {

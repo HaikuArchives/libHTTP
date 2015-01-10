@@ -6,6 +6,7 @@
 #include <DataIO.h>
 
 #include "FieldList.h"
+#include "HTTPRealm.h"
 #include "HTTPUtils.h"
 
 class HTTPMessage
