@@ -5,7 +5,7 @@
 
 #include <DataIO.h>
 
-_IMPEXP_LIBHTTP int io_printf( BDataIO *io, const char *format, ... );
-_IMPEXP_LIBHTTP char *io_getline( BDataIO *io, char *dest, int32 len, char delim = '\n' );
+int io_printf( BDataIO *io, const char *format, ... );
+char *io_getline( BDataIO *io, char *dest, int32 len, char delim = '\n' );
 
 #endif

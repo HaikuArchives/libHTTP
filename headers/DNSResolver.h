@@ -34,6 +34,6 @@ class DNSResolver
 		int32			last_ip;
 };
 
-extern _IMPEXP_LIBHTTP DNSResolver dns_resolver; // Global DNSResolver
+extern DNSResolver dns_resolver; // Global DNSResolver
 
 #endif
