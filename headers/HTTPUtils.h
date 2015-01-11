@@ -11,15 +11,15 @@
 // struct tm * localtime (const time_t *time)
 // struct tm * gmtime (const time_t *time)
 
-extern _IMPEXP_LIBHTTP BLocker brTimeLock;
+extern BLocker brTimeLock;
 
-_IMPEXP_LIBHTTP const char *get_status_str( int32 status_code );
+const char *get_status_str( int32 status_code );
 
 enum http_method { METHOD_POST, METHOD_GET, METHOD_HEAD, METHOD_OPTIONS, 
 	METHOD_PUT, METHOD_DELETE, METHOD_TRACE, METHOD_UNKNOWN };
 	
-_IMPEXP_LIBHTTP http_method http_find_method( const char *method );
-_IMPEXP_LIBHTTP const char *http_find_method( http_method method );
+http_method http_find_method( const char *method );
+const char *http_find_method( http_method method );
 
 enum URI_Type { absolueURI, relativeURI };
 enum Path_Type { abs_path, rel_path, empty_path };
@@ -39,34 +39,34 @@ struct brokenURI
 	char		query[2048];
 };
 
-_IMPEXP_LIBHTTP void parse_URI( const char *URI, brokenURI *brURI );
-_IMPEXP_LIBHTTP char *URI_to_string( brokenURI *brURI, char *s, int32 size, bool full=true );
-_IMPEXP_LIBHTTP bool basic_authenticate( const char *basic_cookie, const char *uid, const char *pass, bool encrypted=true );
+void parse_URI( const char *URI, brokenURI *brURI );
+char *URI_to_string( brokenURI *brURI, char *s, int32 size, bool full=true );
+bool basic_authenticate( const char *basic_cookie, const char *uid, const char *pass, bool encrypted=true );
 
-_IMPEXP_LIBHTTP char *http_to_cgi_header( char *header );
+char *http_to_cgi_header( char *header );
 
-extern _IMPEXP_LIBHTTP const char *kHEAD_ALLOW;
-extern _IMPEXP_LIBHTTP const char *kHEAD_AUTHORIZATION;
-extern _IMPEXP_LIBHTTP const char *kHEAD_ENCODING;
-extern _IMPEXP_LIBHTTP const char *kHEAD_ACCEPT_ENCODING;
-extern _IMPEXP_LIBHTTP const char *kHEAD_CONNECTION;
-extern _IMPEXP_LIBHTTP const char *kHEAD_LENGTH;
-extern _IMPEXP_LIBHTTP const char *kHEAD_TYPE;
-extern _IMPEXP_LIBHTTP const char *kHEAD_DATE;
-extern _IMPEXP_LIBHTTP const char *kHEAD_EXPIRES;
-extern _IMPEXP_LIBHTTP const char *kHEAD_FROM;
-extern _IMPEXP_LIBHTTP const char *kHEAD_IF_MODIFIED;
-extern _IMPEXP_LIBHTTP const char *kHEAD_IF_UNMODIFIED;
-extern _IMPEXP_LIBHTTP const char *kHEAD_LAST_MODIFIED;
-extern _IMPEXP_LIBHTTP const char *kHEAD_LOCATION;
-extern _IMPEXP_LIBHTTP const char *kHEAD_PRAGMA;
-extern _IMPEXP_LIBHTTP const char *kHEAD_REFRESHER;
-extern _IMPEXP_LIBHTTP const char *kHEAD_SERVER;
-extern _IMPEXP_LIBHTTP const char *kHEAD_HOST;
-extern _IMPEXP_LIBHTTP const char *kHEAD_AGENT;
-extern _IMPEXP_LIBHTTP const char *kHEAD_AUTHENTICATE;
-extern _IMPEXP_LIBHTTP const char *kHEAD_CONTENT_RANGE;
-extern _IMPEXP_LIBHTTP const char *kHEAD_RANGE;
-extern _IMPEXP_LIBHTTP const char *kCRLF;
-extern _IMPEXP_LIBHTTP const char *kHTTP_DATE;
+extern const char *kHEAD_ALLOW;
+extern const char *kHEAD_AUTHORIZATION;
+extern const char *kHEAD_ENCODING;
+extern const char *kHEAD_ACCEPT_ENCODING;
+extern const char *kHEAD_CONNECTION;
+extern const char *kHEAD_LENGTH;
+extern const char *kHEAD_TYPE;
+extern const char *kHEAD_DATE;
+extern const char *kHEAD_EXPIRES;
+extern const char *kHEAD_FROM;
+extern const char *kHEAD_IF_MODIFIED;
+extern const char *kHEAD_IF_UNMODIFIED;
+extern const char *kHEAD_LAST_MODIFIED;
+extern const char *kHEAD_LOCATION;
+extern const char *kHEAD_PRAGMA;
+extern const char *kHEAD_REFRESHER;
+extern const char *kHEAD_SERVER;
+extern const char *kHEAD_HOST;
+extern const char *kHEAD_AGENT;
+extern const char *kHEAD_AUTHENTICATE;
+extern const char *kHEAD_CONTENT_RANGE;
+extern const char *kHEAD_RANGE;
+extern const char *kCRLF;
+extern const char *kHTTP_DATE;
 #endif
