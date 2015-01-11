@@ -170,7 +170,7 @@ HTTPRealmList::Authenticate(HTTPRequest *req, HTTPResponse *res, const char *web
 		realmheader.Append("\"");
 
 		res->AddHeader("WWW-Authenticate", realmheader);
-		res->SetHTMLMessage(401, "YOU SHALL NOT PASS");
+		res->SetHTMLMessage(401);
 		req->SendReply(res);
 		return false;
 }
